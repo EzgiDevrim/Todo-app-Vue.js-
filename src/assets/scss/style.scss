@@ -1,0 +1,175 @@
+.container {
+    padding: 10px;
+    width: calc(100% - 20px);
+    min-height: calc(100% - 20px);
+    @mixin feature-icon($color) {
+      grid-column-start: 3;
+      grid-column-end: 3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $color;
+      font-size: 1.6rem;
+      margin: 0 15px;
+      cursor: pointer;
+    }
+    @mixin deleted($color) {
+      grid-column-start: 4;
+      grid-column-end: 4;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      color: $color;
+      max-width: 50px;
+      margin: 0 40px;
+      cursor: pointer;
+    }
+    .title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+      color: #678;
+      background: rgba($color: #f39108, $alpha: .3);
+      border-radius: 45px;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+    .container-colored {
+      padding: 10px;
+      width: calc(100% - 20px);
+      min-height: calc(100% - 20px);
+      background: rgba($color: #f39108, $alpha: .3);
+      border-radius: 10px;
+      .add-item {
+        display: grid;
+        grid-template-columns: 70px auto 70px;
+        grid-template-rows: 60px;
+        width: 100%;
+        height: 60px;
+        background: rgba($color: #000000, $alpha: .3);
+        border-radius: 10px;
+        overflow: hidden;
+        .add-icon {
+          grid-column-start: 1;
+          grid-column-end: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #fff;
+          font-size: 2rem;
+          cursor: pointer;
+        }
+        input {
+          grid-column-start: 2;
+          grid-column-end: 2;
+          background: none;
+          border: none;
+          width: 100%;
+          height: 60px;
+          color: #fff;
+          font-size: 1.6rem;
+          &::placeholder {
+            color: #fff;
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+        .feature-icon {
+          @include feature-icon(#fff);
+        }
+      }
+      .todo-list {
+        padding-top: 20px;
+        .item {
+          display: grid;
+          grid-template-columns: 70px auto 70px;
+          grid-template-rows: 60px;
+          width: 100%;
+          height: 60px;
+          margin-bottom: 2px;
+          background: rgba($color: #99C191, $alpha: .8);
+          border-radius: 30px;
+          overflow: hidden;
+          opacity: 0;
+          transition: all .5s linear;
+          .item-checkbox {
+            grid-column-start: 1;
+            grid-column-end: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            color: #fff;
+            cursor: pointer;
+          }
+          .item-title {
+            grid-column-start: 2;
+            grid-column-end: 2;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            font-size: 1.6rem;
+          }
+          .item-type {
+            grid-column-start: 2;
+            grid-column-end: 2;
+            display: flex;
+            border: none;
+            justify-content: flex-start;
+            align-items: center;
+            font-size: 1.6rem;
+            background-color: rgba($color: #99C191, $alpha: .1);
+          }
+          .feature-icon {
+            @include feature-icon(#fff);
+          }
+          .deleted {
+            @include deleted(#fe0101);
+          }
+        }
+        .show {
+          opacity: 1;
+        }
+      }
+      .complete-list {
+        .item {
+          position: relative;
+          justify-content: space-between; 
+          background: rgba($color: #f39108, $alpha: .3);
+          &::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: calc(100% - 170px);
+            margin: 0 60px;
+            border-bottom: 2px solid #555;
+          }
+        }
+      }
+    }
+    .show-completed {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 20px;
+      .button {
+        color: #fff;
+        padding: 10px;
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        background: rgba($color: #000000, $alpha: .3);
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+      }
+    }
+    .star {
+      background-color: #f19b08;
+      color: #fff !important;
+    }
+    .del {
+      color: #fff !important;
+    }
+  }
